@@ -18,26 +18,24 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+
 group :development, :test do
-  gem "sqlite3", "1.4.2"
-  gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri windows ]
 end
 
 group :development do
-  gem "web-console", "4.2.0"
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "web-console"
+
 end
 
 group :test do
-  gem "capybara",                 "3.37.1"
-  gem "selenium-webdriver",       "4.2.0"
-  gem "webdrivers",               "5.0.0"
-  gem "rails-controller-testing", "1.0.5"
-  gem "minitest",                 "5.15.0"
-  gem "minitest-reporters",       "1.5.0"
-  gem "guard",                    "2.18.0"
-  gem "guard-minitest",           "2.4.6"
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
 end
 
 group :production do
-  gem "pg", "1.3.5"
+  gem 'pg', '1.3.5'
 end
