@@ -2,14 +2,22 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
-gem "rails", "~> 7.0.4"
-gem "sprockets-rails"
-gem "puma", ">= 5.0"
-gem "importmap-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "jbuilder"
-gem "bootsnap", require: false
+gem "rails",                      "~> 7.0.4"
+gem "image_processing",           "1.12.2"
+gem "active_storage_validations", "0.9.8"
+gem "bcrypt",                     "3.1.18"
+gem "faker",                      "2.21.0"
+gem "will_paginate",              "3.3.1"
+gem "bootstrap-will_paginate",    "1.0.0"
+gem "bootstrap-sass",             "3.4.1"
+gem "sassc-rails",                "2.1.2"
+gem "sprockets-rails",            "3.4.2"
+gem "importmap-rails",            "1.1.0"
+gem "turbo-rails",                "1.1.1"
+gem "stimulus-rails",             "1.0.4"
+gem "jbuilder",                   "2.11.5"
+gem "puma",                       "5.6.4"
+gem "bootsnap",                   "1.12.0", require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
