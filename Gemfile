@@ -20,8 +20,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ]
+  gem "sqlite3", "1.4.2"
+  gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
