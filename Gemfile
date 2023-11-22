@@ -6,7 +6,7 @@ gem "rails", "~> 7.0.4"
 
 
 gem "sprockets-rails"
-gem "sqlite3", "~> 1.4"
+
 gem "puma", ">= 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
@@ -21,7 +21,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
-  #gem "sqlite3", "1.4.2"
+  gem "sqlite3", "~> 1.4"
 end
 
 group :development do
@@ -37,5 +37,5 @@ group :test do
 end
 
 group :production do
-  gem "pg", "1.3.5"
+  gem "sqlite3", "~> 1.4"
 end
