@@ -29,6 +29,17 @@ textarea {
   }
 }
 
+.navbar {
+  background-color:#217949;
+  background-image: none;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited{
+  background-color:#217949;
+}
 
 /* typography */
 
