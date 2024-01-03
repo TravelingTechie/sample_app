@@ -25,6 +25,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
     assert_select "a[href=?]", user_path(@user)
+    #added to test setting link works
+    assert_select "a[href=?]", edit_user_path(@user)
 
     delete logout_path
     assert_not is_logged_in?
