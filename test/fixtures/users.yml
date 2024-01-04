@@ -7,3 +7,25 @@ heidi:
   name: Heidi Katzen
   email: heidi@example.com
   password_digest: <%= User.digest('password') %> 
+
+ziggy:
+  name: Ziggy Rance
+  email: ziggy@example.com
+  password_digest: <%= User.digest('password') %>
+
+voodoo:
+  name: VooDoo Rance
+  email: voodoo@example.com
+  password_digest: <%= User.digest('password') %>
+  
+zander:
+  name: Zander Hunde
+  email: zander@example.com
+  password_digest: <%= User.digest('password') %>
+
+<% 20.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
