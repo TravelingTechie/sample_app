@@ -2,12 +2,21 @@
 <h1>All users</h1>
 
 <%= will_paginate %>
-<ul class="users">
-  <% @users.each do |user| %>
-    <li>
-      <%= gravatar_for user, size: 50 %>
-      <%= link_to user.name, user %>
-    </li>
-  <% end %>
-</ul>
+
+<table id="user_table">
+    <tr>
+      <th>Gravitar</th>
+      <th>Name</th>
+      
+      <th>Updated On</th>
+      <th>Recipes</th>
+      <% if current_user.admin? %>
+        <th>Delete</th>
+      <% end %>
+    </tr>
+
+  <tbody>
+  <%= render @users %>
+  </tbody>
+</table>
 <%= will_paginate %>
