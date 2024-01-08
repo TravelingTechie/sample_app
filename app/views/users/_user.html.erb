@@ -3,16 +3,15 @@
   <td><%= link_to user.name, user %> </td>
   <td><%= current_user.updated_at.strftime('%m/%d/%Y') %></td>
   <td>Recipe submitted</td>
-  
-      <% if current_user.admin? %>
-      <td>
-       <% if !current_user?(user) %>
+  <% if current_user.admin? %>
+    <td>
+      <% if !current_user?(user) %>
         <%= link_to "Delete<i class='glyphicon glyphicon-trash'></i>".html_safe, 
             user, data: { "turbo-method": :delete,
                                             turbo_confirm: "You sure?"} %>
       <% else %> -
       <% end %>
-      </td>
-      <% end %>
+    </td>
+  <% end %>
   
 </tr>
