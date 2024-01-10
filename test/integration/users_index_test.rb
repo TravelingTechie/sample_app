@@ -11,13 +11,14 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_template 'users/index'
     assert_select 'div.pagination'
-    first_page_of_users = User.paginate(page: 1, :per_page => 10)
+    first_page_of_users = User.where(activated: true).paginate(page: 1, :per_page => 10)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
       unless user == @admin
         assert_select 'a[href=?]', user_path(user), text: 'Delete'
       end
     end
+
     assert_difference 'User.count', -1 do
       delete user_path(@non_admin)
       assert_response :see_other
@@ -29,6 +30,22 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     log_in_as(@non_admin)
     get users_path
     assert_select 'a', text: 'delete', count: 0
+  end
+
+  test "should display only activated users" do
+    # Deactivate the first user on the page.
+    # Making an inactive fixture user isn't sufficient because Rails can't
+    # guarantee it would appear on the first page.
+    User.paginate(page: 1, :per_page => 10).first.toggle!(:activated)
+    first_page_of_users =  User.where(activated: true).paginate(page: 1, :per_page => 10)
+    first_page_of_users.each do |user|
+      assert user.activated?
+    end
+    #There is a one deactivated user in the yml and one that is deactivated here
+    page_inactive_user =  User.where(activated: false).paginate(page: 1, :per_page => 10)
+    page_inactive_user.each do |user|
+      assert_not user.activated?
+    end
   end
 
 end
