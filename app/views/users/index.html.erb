@@ -5,10 +5,11 @@
 <table id="user_table">
     <tr>
       <th>Gravitar</th>
-      <th>Name</th>
+      <th><%= link_to "Name", :sort => "name"%></th>
       <th>Updated On</th>
       <th>Recipes</th>
       <% if current_user.admin? %>
+        <th><%= link_to "Activated", :sort => "activated"%></th>
         <th>Delete</th>
       <% end %>
     </tr>

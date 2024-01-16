@@ -1,12 +1,25 @@
 <tr>
   <td><%= gravatar_for user, size: 50 %></td>
   <td><%= link_to user.name, user %> </td>
-  <td><%= current_user.updated_at.strftime('%m/%d/%Y') %></td>
+  <td><%= user.updated_at.strftime('%m/%d/%Y') %></td>
   <td>Recipe submitted</td>
   <% if current_user.admin? %>
     <td>
+      <% if user.activated? && !current_user?(user) %>
+        <%= link_to "Dectivate", edit_account_activation_url(user.activation_token,
+                                                    email: user.email, id: user.id, 
+                                                    admin: true, deactivate: true) %>
+       <% else %> 
+        <% if !user.activated? %>
+          <%= link_to "Activate", edit_account_activation_url(user.activation_token,
+                                                    email: user.email, id: user.id, 
+                                                    admin: true, activate: true) %>
+        <% end %> 
+      <% end %> 
+    </td>
+    <td>
       <% if !current_user?(user) %>
-        <%= link_to "Delete<i class='glyphicon glyphicon-trash'></i>".html_safe, 
+        <%= link_to "<i class='glyphicon glyphicon-trash'></i>".html_safe, 
             user, data: { "turbo-method": :delete,
                                             turbo_confirm: "You sure?"} %>
       <% else %> -
