@@ -8,15 +8,17 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 
   test "index as admin including pagination and delete links" do
     log_in_as(@admin)
-    get users_path
+    get users_path    
     assert_template 'users/index'
     assert_select 'div.pagination'
+    assert_select 'th', 'Delete' 
     first_page_of_users = User.paginate(page: 1, :per_page => 10)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
       unless user == @admin
-        #Fix me
-        #assert_pattern_match 'a[href=?]', user_path(user), text: 'admin'
+        #I hate this.  edit_account_activation_url(user) pulls example.com as domain
+        #how do I get it to pull localhost?
+        assert_select 'a[href=?]', user_path(user), text: 'Del'
       end
     end
 
@@ -30,7 +32,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   test "index as non-admin" do
     log_in_as(@non_admin)
     get users_path
-    assert_select 'a', text: 'delete', count: 0
+    assert_select 'a', text: 'deactivate', count: 0
   end
 
   test "should display only activated users for non-admin" do

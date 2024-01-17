@@ -45,7 +45,7 @@ Rails.application.configure do
   host = 'localhost:3000' # Don't use this literally; use your local host instead.
   # Use this if developing on localhost.
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
-
+  #config.action_controller.default_url_options= { host: host, protocol: 'http' }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

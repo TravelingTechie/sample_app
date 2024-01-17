@@ -12,7 +12,7 @@ class AccountActivationsController < ApplicationController
       redirect_to users_path 
     elsif user && user.activated? && params[:admin] && params[:deactivate]
       user.deactivate
-      flash[:info] = "Account deactivated!"
+      flash[:danger] = "Account deactivated!"
       redirect_to users_path
     else
       flash[:danger] = "Invalid activation link"

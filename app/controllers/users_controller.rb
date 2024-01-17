@@ -28,7 +28,6 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       @user.errors.full_messages
-      flash[:info] = "Duplicate Account"
       render 'new', status: :unprocessable_entity
     end
   end

@@ -6,7 +6,7 @@
   <% if current_user.admin? %>
     <td>
       <% if user.activated? && !current_user?(user) %>
-        <%= link_to "Dectivate", edit_account_activation_url(user.activation_token,
+        <%= link_to "Deactivate", edit_account_activation_url(user.activation_token,
                                                     email: user.email, id: user.id, 
                                                     admin: true, deactivate: true) %>
        <% else %> 
@@ -19,7 +19,7 @@
     </td>
     <td>
       <% if !current_user?(user) %>
-        <%= link_to "<i class='glyphicon glyphicon-trash'></i>".html_safe, 
+        <%= link_to "Del <i class='glyphicon glyphicon-trash'></i>".html_safe, 
             user, data: { "turbo-method": :delete,
                                             turbo_confirm: "You sure?"} %>
       <% else %> -
